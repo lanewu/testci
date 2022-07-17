@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Set up JDK 11 for x64
@@ -18,9 +16,18 @@ jobs:
           distribution: 'adopt'
           architecture: x64
           cache: 'maven'
+      
+      - name: Install required packages
+        run: sudo apt-get install -y thrift-compiler protobuf-compiler
+      
+      - name: Test packages
+        run: thrift --version && protoc --version
+      
       - name: Build with Maven
-        run: mvn --version
+        run: mvn package
+      
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+        
       - run: echo "🍏 This job's status is ${{ job.status }}."
