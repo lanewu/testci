@@ -24,13 +24,9 @@ jobs:
         run: thrift --version && protoc --version
       
       - name: Build with Maven
-        run: mvn package -DskipTests
+        run: mvn package -Dmaven.test.skip=true
       
       - name: test with Maven
         run: mvn test
-      
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
         
       - run: echo "🍏 This job's status is ${{ job.status }}."
