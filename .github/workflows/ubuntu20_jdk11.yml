@@ -13,15 +13,15 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
           architecture: x64
           cache: 'maven'
       
       - name: Install required packages
-        run: sudo apt-get install -y thrift-compiler protobuf-compiler
-      
-      - name: Test packages
-        run: thrift --version && protoc --version
+        run: |
+          sudo apt-get install -y curl protobuf-compiler
+          curl -LO http://old-releases.ubuntu.com/ubuntu/pool/universe/t/thrift-compiler/thrift-compiler_0.9.1-2.1_amd64.deb
+          sudo dpkg -i thrift-compiler_0.9.1-2.1_amd64.deb
       
       - name: Build with Maven
         run: |
