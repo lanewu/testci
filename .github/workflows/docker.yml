@@ -1,0 +1,12 @@
+name: CentOS 7 / JDK 8
+on: 
+  workflow_dispatch:
+jobs:
+  pengyun-build-job:
+    runs-on: ubuntu-18.04
+    container:
+      image: centos:7.9.2009
+    steps:
+      - name: Check for dockerenv
+        run: |
+          cat /etc/redhat-release
