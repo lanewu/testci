@@ -23,7 +23,7 @@ jobs:
           
       - name: Build with Maven
         run: |
-          mvn versions:use-dep-version -DdepVersion=$(thrift --version | awk '{print $3}') -Dincludes=org.apache.thrift:libthrift
-          mvn package -Dmaven.test.skip=true
+          mvn versions:use-dep-version --batch-mode -DdepVersion=$(thrift --version | awk '{print $3}') -Dincludes=org.apache.thrift:libthrift
+          mvn package --batch-mode -Dmaven.test.skip=true
       - name: test with Maven
-        run: mvn test
+        run: mvn --batch-mode test
