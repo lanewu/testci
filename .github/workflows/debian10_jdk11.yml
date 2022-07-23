@@ -20,7 +20,7 @@ jobs:
       - name: Install required packages
         run: |
           apt-get update
-          apt-get install -y curl protobuf-compiler
+          apt-get install -y curl maven protobuf-compiler
           curl -LO http://ftp.debian.org/debian/pool/main/t/thrift-compiler/thrift-compiler_0.9.1-2.1+b1_amd64.deb
           dpkg -i thrift-compiler_0.9.1-2.1+b1_amd64.deb
           
