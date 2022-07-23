@@ -1,5 +1,6 @@
 name: CentOS 8 / JDK 8
 on: 
+  push:
   workflow_dispatch:
 jobs:
   pengyun-build-job:
