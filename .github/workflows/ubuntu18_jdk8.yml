@@ -18,6 +18,7 @@ jobs:
       
       - name: Install required packages
         run: |
+          apt-get update
           apt-get install -y thrift-compiler protobuf-compiler
       
       - name: Build with Maven

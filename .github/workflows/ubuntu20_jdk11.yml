@@ -18,6 +18,7 @@ jobs:
       
       - name: Install required packages
         run: |
+          apt-get update
           apt-get install -y curl protobuf-compiler
           curl -LO http://old-releases.ubuntu.com/ubuntu/pool/universe/t/thrift-compiler/thrift-compiler_0.9.1-2.1_amd64.deb
           dpkg -i thrift-compiler_0.9.1-2.1_amd64.deb
