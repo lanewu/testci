@@ -18,7 +18,9 @@ jobs:
           cache: 'maven'
       - name: Install required packages
         run: |
-          yum update -y
+          #https://stackoverflow.com/questions/70926799/centos-through-a-vm-no-urls-in-mirrorlist
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
           yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
           yum install -y net-tools maven compat-openssl10 protobuf-compile
           yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/t/thrift-0.9.1-15.el7.x86_64.rpm
