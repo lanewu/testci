@@ -1,4 +1,4 @@
-name: CentOS 7 / JDK 8
+name: CentOS 7
 on: 
   push:
   workflow_dispatch:

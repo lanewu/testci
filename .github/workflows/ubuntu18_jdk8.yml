@@ -1,9 +1,9 @@
-name: Ubuntu 18 / JDK 8
+name: Ubuntu 18
 on: 
   workflow_dispatch:
   push:
 jobs:
-  Explore-GitHub-Actions:
+  pengyun-build-job:
     runs-on: ubuntu-18.04
     steps:
       - name: Check out repository
@@ -18,7 +18,7 @@ jobs:
       
       - name: Install required packages
         run: |
-          sudo apt-get install -y thrift-compiler protobuf-compiler
+          apt-get install -y thrift-compiler protobuf-compiler
       
       - name: Build with Maven
         run: |

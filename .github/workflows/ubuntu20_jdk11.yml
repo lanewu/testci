@@ -1,9 +1,9 @@
-name: Ubuntu 20 / JDK 11
+name: Ubuntu 20
 on: 
   workflow_dispatch:
   push:
 jobs:
-  Explore-GitHub-Actions:
+  pengyun-build-job:
     runs-on: ubuntu-20.04
     steps:
       - name: Check out repository
@@ -18,9 +18,9 @@ jobs:
       
       - name: Install required packages
         run: |
-          sudo apt-get install -y curl protobuf-compiler
+          apt-get install -y curl protobuf-compiler
           curl -LO http://old-releases.ubuntu.com/ubuntu/pool/universe/t/thrift-compiler/thrift-compiler_0.9.1-2.1_amd64.deb
-          sudo dpkg -i thrift-compiler_0.9.1-2.1_amd64.deb
+          dpkg -i thrift-compiler_0.9.1-2.1_amd64.deb
       
       - name: Build with Maven
         run: |
